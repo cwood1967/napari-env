@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "cropper",
+    "jupyterlab>=4.6.3",
     "napari-nikon-nd2>=0.2.0",
     "napari-tiff>=0.1.6",
     "napari-vsi",
@@ -14,6 +15,7 @@ dependencies = [
 
 [project.scripts]
 napari-env = "napari_env:main"
+run_jupyter = "napari_env:launch_notebook"
 
 [build-system]
 requires = ["hatchling", "hatch-vcs"]
