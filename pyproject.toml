@@ -1,0 +1,28 @@
+[project]
+name = "napari-env"
+version = "0.1.0"
+description = "Create and uv environment and launch napari"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "cropper",
+    "napari-nikon-nd2>=0.2.0",
+    "napari-tiff>=0.1.6",
+    "napari-vsi",
+    "napari[all]>=0.9.0",
+]
+
+[project.scripts]
+napari-env = "napari_env:main"
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/napari_env"]
+
+[tool.uv.sources]
+napari-vsi = { git = "https://github.com/cwood1967/napari-vsi" }
+cropper = { git = "https://github.com/cwood1967/napari-cropper" }
+
