@@ -7,6 +7,7 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
     "cropper",
     "jupyterlab>=4.6.3",
+    "napari-czitools>=0.12.4",
     "napari-nikon-nd2>=0.2.0",
     "napari-tiff>=0.1.6",
     "napari-vsi",
