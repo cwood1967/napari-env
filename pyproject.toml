@@ -6,7 +6,6 @@ readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "cropper",
-    "jupyterlab>=4.6.3",
     "napari-czitools>=0.12.4",
     "napari-nikon-nd2>=0.2.0",
     "napari-tiff>=0.1.6",
@@ -16,7 +15,6 @@ dependencies = [
 
 [project.scripts]
 napari-env = "napari_env:main"
-run_jupyter = "napari_env:launch_notebook"
 
 [build-system]
 requires = ["hatchling", "hatch-vcs"]
@@ -29,3 +27,21 @@ packages = ["src/napari_env"]
 napari-vsi = { git = "https://github.com/cwood1967/napari-vsi" }
 cropper = { git = "https://github.com/cwood1967/napari-cropper" }
 
+
+# --- pixi (parallel to the uv setup above; uv ignores this section) ---
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
+
+# Only the interpreter comes from conda-forge; everything else is resolved
+# from PyPI exactly as uv does, using [project].dependencies.
+[tool.pixi.dependencies]
+python = "3.12.*"
+
+# pixi does not read [tool.uv.sources], so repeat the git sources here.
+[tool.pixi.pypi-dependencies]
+napari-vsi = { git = "https://github.com/cwood1967/napari-vsi" }
+cropper = { git = "https://github.com/cwood1967/napari-cropper" }
+
+[tool.pixi.tasks]
+napari = "napari"
